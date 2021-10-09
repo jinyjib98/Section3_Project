@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% if value != 0 %}
+    <center>
+    <h1>Result</h1><br/><br/>
+    
+    <h3>Your Predicted Score is:</h3><br/> 
+    <p>
+        <span style="color: cornflowerblue; font-size: 400%;">{{ value }}</span>
+        <span stype="font-size: 100%;">/ 20</span>
+    </p>
+    </center>
+    {% else %}
+    <center>
+    <h1>Result</h1><br/><br/>
+    
+    <h3>Your Predicted Score is: 0</h3><br/>
+    <h2>Keep Working!</h2>
+    </center>
+    {% endif %}
+{% endblock %}

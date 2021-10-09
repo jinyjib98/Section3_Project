@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>How about guessing your Grade?</h1> <small>figure out your grade using minimal information</small>
+        <p><br/>Have you ever thought of predicting your grade by using your personal information?<br/>It would give you some insight about how to improve your grade!</p>
+    </div>
+    <center>
+    <form method="POST", action="{{url_for('survey')}}">
+        <input type="submit", value="Let's Start!">
+    </form>
+    </center>
+    
+
+{% endblock %}
+  
+
+
+    
+
