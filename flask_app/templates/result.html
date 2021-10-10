@@ -1,23 +1,48 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-    {% if value != 0 %}
+    {% if value > 0 %}
     <center>
-    <h1>Result</h1><br/><br/>
+    <br/><h1>Result</h1><br/>
     
-    <h3>Your Predicted Score is:</h3><br/> 
-    <p>
-        <span style="color: cornflowerblue; font-size: 400%;">{{ value }}</span>
-        <span stype="font-size: 100%;">/ 20</span>
-    </p>
+    <div class="mb-3" style="text-align: center; background-color: rgb(255, 253, 247); padding: 30px; margin-left: 30px; margin-right: 30px;">
+        <h3>당신의 예상 점수는</h3><br/> 
+        <p>
+            <span style="color: rgb(67, 146, 206); font-size: 400%;"><b>{{ value }}</b></span>
+            <span stype="font-size: 130%;">/ 20</span>
+            <span style="font-size: 140%;">&nbsp;입니다</span>
+        </p>
+    </div><br/>
+    <p style="margin-left: 30px; margin-right: 30px;">
+        점수에 너무 큰 의미부여를 하기 보다는, 어떤 부분을 더 개선하면 좋을지 참고하는 용도로 활용하시기 바랍니다!
+    </p><br/>
+
+    <form method="GET", action="{{url_for('home')}}">
+        <input class="btn btn-outline-info" type="submit" value="처음으로">
+    </form>
+
     </center>
     {% else %}
     <center>
     <h1>Result</h1><br/><br/>
     
-    <h3>Your Predicted Score is: 0</h3><br/>
-    <h2>Keep Working!</h2>
+    <div class="mb-3" style="text-align: center; background-color: rgb(255, 253, 247); padding: 30px; margin-left: 30px; margin-right: 30px;">
+        <h3>당신의 예상 점수는</h3><br/>
+        <p>
+            <span style="color: rgb(222, 61, 61); font-size: 400%;"><b>0</b></span>
+            <span stype="font-size: 130%;">/ 20</span>
+            <span style="font-size: 140%;">&nbsp;입니다</span>
+        </p>
+    </div><br/>
+
+    <p style="margin-left: 30px; margin-right: 30px;">
+    너무 좌절하지 말고 어떤 부분을 개선하면 좋을지 생각해봅시다!
+    </p><br/>
+
+    <form method="GET", action="{{url_for('home')}}">
+        <input class="btn btn-outline-info" type="submit" value="처음으로">
+    </form>
+    
     </center>
     {% endif %}
 {% endblock %}

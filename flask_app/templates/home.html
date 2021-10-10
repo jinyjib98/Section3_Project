@@ -1,14 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1>How about guessing your Grade?</h1> <small>figure out your grade using minimal information</small>
-        <p><br/>Have you ever thought of predicting your grade by using your personal information?<br/>It would give you some insight about how to improve your grade!</p>
-    </div>
     <center>
-    <form method="POST", action="{{url_for('survey')}}">
-        <input type="submit", value="Let's Start!">
-    </form>
+    <small>made by HyungjinKim :)</small><br/><br/>
+    <div class="container-fluid" style="text-align: center; background-color: rgb(255, 253, 247); padding: 30px 30px 10px 30px; margin-top: 50px;">
+        <p>
+            다들 한번쯤 성적을 미리 알 수 있다면 좋겠다는 생각을 해본적 있지 않나요?<br/>
+            이 테스트는 간단한 질문들을 통해 여러분의 최종 성적을 예측할 수 있도록 만들어졌습니다.<br/><br/>
+
+            결과는 20점 만점 기준으로 제공됩니다.
+        </p>
+    </div>
+
+    <div class="container-fluid">
+        <p>
+            <span style="font-size: 200%;"><br/><br/>준비가 되셨다면</span><br/>
+        </p>
+        <form method="POST", action="{{url_for('survey')}}">
+            <input class="btn btn-outline-info" type="submit" value="여기를 눌러주세요!">
+        </form><br/>
+    </div>
+        
+    
     </center>
     
 

@@ -37,15 +37,22 @@ def create_app():
             
             survey = np.array([[age, failures, higher, romantic, M_edu, F_edu, go_out, travel]])
             pred = model.predict(survey)
-            output = round(pred[0])
+
+            # 결과가 0점 미만으로 나올 경우 0으로 간주
+            if pred[0] < 0:
+                output = 0
+            else:
+                output = round(pred[0])
 
             # 입력값과 예측 결과가 db에 연동되도록 함
+            
             conn = sqlite3.connect(DATABASE_PATH)
             cur = conn.cursor()
 
             cur.execute("INSERT INTO Info(age, failures, higher, romantic, M_edu, F_edu, go_out, travel, grade) VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(age, failures, higher, romantic, M_edu, F_edu, go_out, travel, output))
             conn.commit()
             cur.close()
+            
 
             return render_template('result.html', value=output)
     

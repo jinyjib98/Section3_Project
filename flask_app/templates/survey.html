@@ -2,17 +2,89 @@
 
 {% block content %}
     <center>
-    <h1>Answer These Question</h1>
-    <form method="POST", action="{{url_for('guess_grade')}}">
-        <b> Age : <input type="number", name='age', placeholder="write down your age"> <br/><br/> 
-        Failure : <input type="number", name='failure', placeholder="choose between 1 ~ 5"> <br/><br/>
-        Higher : <input type="number", name='higher'> <br/><br/>
-        Romantic Relationship : <input type="number", name='romantic'> <br/><br/>
-        Mother's education level : <input type="number", name='mom', placeholder="range 1 ~ 5"> <br/><br/>
-        Father's education level : <input type="number", name='pap', placeholder="range 1 ~ 5"> <br/><br/>
-        Go Out : <input type="number", name='goout', placeholder="choose between 1 ~ 5"> <br/><br/>
-        Traveltime : <input type="number", name='travel', placeholder="choose between 1 ~ 5"> <br/><br/><br/></b>
-        <input type="submit", value='Start Predict!'>
+    <h1 style="margin-top: 40px;">Answer These Questions</h1>
+    질문에 전부 답변을 하셔야 예측이 가능합니다
+    
+    <form method="POST", action="{{url_for('guess_grade')}}" style="background-color: rgb(255, 253, 247); padding: 30px 30px 30px 30px; margin-left: 30px; margin-right: 30px;">
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>나이</b></p>
+            <p>나이를 적어주세요</p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="age" id="age" placeholder="write down your age" required>
+                <label for="age">숫자만 입력하세요</label>
+            </div>
+        </div>
+
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>이전에 F를 맞은 수업의 갯수는 몇 개 인가요?</b></p>
+            <p>4개 이상: <b>4</b></p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="failure" id="failure" placeholder="write down your number" required>
+                <label for="failure">0 ~ 4 사이의 숫자를 입력하세요</label>
+            </div>
+        </div>
+        
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>고등교육(e.g. 대학)을 받을 의향이 있나요?</b></p>
+            <p>있다: <b>1</b> / 없다: <b>0</b></p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="higher" id="higher" placeholder="write down your number" required>
+                <label for="higher">대답에 해당하는 숫자를 입력하세요</label>
+            </div>
+        </div>
+        
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>현재 교제중인 사람이 있나요?</b></p>
+            <p>있다: <b>1</b> / 없다: <b>0</b></p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="romantic" id="romantic" placeholder="write down your number" required>
+                <label for="romantic">대답에 해당하는 숫자를 입력하세요</label>
+            </div>
+        </div>
+
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>어머니의 최종학력</b></p>
+            <p>- 없음(모름): <b>0</b><br/>- 초등학교 졸업: <b>1</b><br/>- 중학교 졸업: <b>2</b><br/>- 고등학교 졸업: <b>3</b><br/>- 대학교 학사 이상: <b>4</b></p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="mom" id="mom" placeholder="write down your number" required>
+                <label for="mom">어머니의 최종학력에 해당하는 숫자를 입력하세요</label>
+            </div>
+        </div>
+        
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>아버지의 최종학력</b></p>
+            <p>- 없음(모름): <b>0</b><br/>- 초등학교 졸업: <b>1</b><br/>- 중학교 졸업: <b>2</b><br/>- 고등학교 졸업: <b>3</b><br/>- 대학교 학사 이상: <b>4</b></p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="pap" id="pap" placeholder="write down your number" required>
+                <label for="pap">아버지의 최종학력에 해당하는 숫자를 입력하세요</label>
+            </div>
+        </div>
+        
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>매주 얼마나 자주 밖에서 노는데 시간을 보내나요?</b></p>
+            <p>
+                거의 없음: <b>1</b> &lt;&lt;--------------------&gt;&gt; 거의 매일: <b>5</b>
+            </p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="goout" id="goout" placeholder="write down your number" required>
+                <label for="goout">정도에 따라 1에서 5까지 중 해당하는 숫자를 입력하세요</label>
+            </div>
+        </div>
+        
+        <div class="mb-3" style="text-align: left;">
+            <p style="font-size: x-large;"><b>집에서 학교까지 통학 시간이 얼마나 걸리나요?</b></p>
+            <p>- 15분 이내: <b>1</b><br/>- 15 ~ 30분 사이: <b>2</b><br/>- 30분 ~ 1시간 사이: <b>3</b><br/>- 1시간 이상: <b>4</b></p>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="travel" id="travel" placeholder="write down your number" required>
+                <label for="travel">통학 시간에 해당하는 숫자를 입력하세요</label>
+            </div>
+        </div>
+        
+        <div style="background-color: #ffec83; margin-top: 40px; padding: 20px;" >
+            답변을 다시 확인하시고, 이상이 없다면&nbsp;&nbsp;
+            <input class="btn btn-outline-info" type="submit", value='여기를 눌러주세요!'>
+        </div>
+        
     </form>
     
     </center>
